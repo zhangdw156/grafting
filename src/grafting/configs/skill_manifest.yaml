@@ -1,0 +1,9 @@
+# unified skill filter result -> ranked manifest
+
+filter_result: artifacts/skill_filter_result.json
+
+output_manifest: artifacts/skill_manifest.jsonl
+output_summary:
+output_selected:
+top_k_per_domain: 0
+blocked_risk_flags: []

@@ -1,0 +1,12 @@
+defaults:
+  - _self_
+  - override hydra/job_logging: disabled
+
+env_dir: ???
+traj_dir: ???
+output_dir: results/evaluations
+inner_skills_root: src/grafting/inner_skills/evaluation
+
+workers: ${oc.decode:${oc.env:WORKERS,1}}
+sandbox_path: null
+log_level: INFO

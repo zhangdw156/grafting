@@ -1,0 +1,23 @@
+# Environment evolution config.
+#
+# Usage:
+#   uv run grafting.env.evolve env_dir=/path/to/envs
+#
+# concurrency = number of environments evolved simultaneously.
+# workers = number of workers each sub-runner (task gen, evaluation) uses.
+# Assess sub-runs within each environment use `workers` workers.
+
+defaults:
+  - _self_
+  - override hydra/job_logging: disabled
+
+env_dir: ???
+inner_skills_root: src/grafting/inner_skills/environment_evolution
+output_root: results/env_evolution
+concurrency: 1
+workers: ${oc.decode:${oc.env:WORKERS,1}}
+initial_assess_count: 5
+reassess_count: 3
+max_turns: 30
+sandbox_path: null
+log_level: INFO

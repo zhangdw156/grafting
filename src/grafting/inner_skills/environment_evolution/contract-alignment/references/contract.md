@@ -1,0 +1,1 @@
+../../../environment_synthesis/schema-design/references/contract.md

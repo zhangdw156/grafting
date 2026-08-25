@@ -1,0 +1,61 @@
+# Model and endpoint configuration.
+#
+# Supported providers:
+#   anthropic
+#   openai_chat_completions
+#   openai_responses
+#
+# Supported harness backends:
+#   claude_code
+#   codex
+#   opencode
+
+environment:
+  backend: codex
+  timeout: 900
+  endpoint:
+    model: your-coding-model
+    provider: openai_responses
+    base_url: https://your-openai-compatible-endpoint/v1
+    api_key: your-api-key
+
+task:
+  backend: codex
+  timeout: 900
+  endpoint:
+    model: your-coding-model
+    provider: openai_responses
+    base_url: https://your-openai-compatible-endpoint/v1
+    api_key: your-api-key
+
+simulation:
+  user_agent:
+    endpoint:
+      model: your-chat-model
+      provider: openai_chat_completions
+      base_url: https://your-openai-compatible-endpoint/v1
+      api_key: your-api-key
+  assistant_agent:
+    endpoint:
+      model: your-chat-model
+      provider: openai_chat_completions
+      base_url: https://your-openai-compatible-endpoint/v1
+      api_key: your-api-key
+
+evaluation:
+  backend: codex
+  timeout: 900
+  endpoint:
+    model: your-coding-model
+    provider: openai_responses
+    base_url: https://your-openai-compatible-endpoint/v1
+    api_key: your-api-key
+
+evolution:
+  backend: codex
+  timeout: 900
+  endpoint:
+    model: your-coding-model
+    provider: openai_responses
+    base_url: https://your-openai-compatible-endpoint/v1
+    api_key: your-api-key

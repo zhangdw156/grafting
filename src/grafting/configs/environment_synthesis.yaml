@@ -1,0 +1,17 @@
+# Environment synthesis runner config
+#
+# Usage:
+#   uv run grafting.environment.synthesis raw_skills_root=/path/to/skills env_output=/path/to/envs
+
+defaults:
+  - _self_
+  - override hydra/job_logging: disabled
+
+raw_skills_root: ???
+env_output: ???
+inner_skills_root: src/grafting/inner_skills/environment_synthesis
+
+output_root: results/environment_synthesis
+workers: ${oc.decode:${oc.env:WORKERS,1}}
+sandbox_path: null
+log_level: INFO

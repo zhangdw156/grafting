@@ -1,0 +1,8 @@
+# ranked manifest -> softly balanced subset
+
+input_manifest: artifacts/skill_manifest.jsonl
+output_selected: artifacts/skill_manifest_balanced.jsonl
+output_summary:
+target_count: 300
+balance_strength: 1.0
+eligible_only: true

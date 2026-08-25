@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+  - override hydra/job_logging: disabled
+
+env_dir: ???
+task_dir: ???
+output_dir: results/trajectories
+
+workers: ${oc.decode:${oc.env:WORKERS,1}}
+max_turns: 30
+log_level: INFO

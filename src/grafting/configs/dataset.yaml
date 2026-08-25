@@ -1,0 +1,12 @@
+# Batch dataset export config.
+defaults:
+  - _self_
+  - override hydra/job_logging: disabled
+
+traj_dir: ""
+eval_dir: ""
+output: ""
+limit: 0
+dry_run: false
+truncate: "no"
+log_level: INFO
