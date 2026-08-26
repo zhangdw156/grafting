@@ -1,5 +1,5 @@
 {
-  "include": ["src/grafting"],
+  "include": ["src/grafting", "src/probe"],
   "pythonVersion": "3.13",
   "typeCheckingMode": "basic"
 }

@@ -38,7 +38,7 @@ and validates those trajectories against fresh environment state.
 
 | Artifact | Contents | Role |
 |---|---|---|
-| **Grafting** | Environment, task, simulation, validation, and Qwen3 export code | Implementation |
+| **Grafting** | Environment, task, simulation, validation, probing, and Qwen3 export code | Implementation |
 | **[Grove-500](https://huggingface.co/datasets/zhangdw/grove-500)** | 500 executable environments | End-to-end experiments |
 | **[Grove-5K](https://huggingface.co/datasets/zhangdw/grove-5k)** | 5,101 executable environments | Synthesis-scale release |
 | **[Fathom-12K](https://huggingface.co/datasets/zhangdw/fathom-12k)** | 12,745 verified trajectories | Verified trajectory pool |
@@ -120,6 +120,37 @@ Every generated environment follows the same portable layout:
 The backend is deterministic and stores all mutable state in the supplied
 SQLite database. Downstream simulation and validation use fresh database
 copies, preserving the released seed world.
+
+## 🔭 Probe and Fathoming Data Selection
+
+Probe an OpenAI-compatible model at every tool-call depth, then export the
+samples on its learning frontier:
+
+```bash
+uv run python -m probe.prepare \
+  /path/to/trajectories.jsonl \
+  results/probe
+
+uv run python -m probe.rollout \
+  results/probe \
+  results/probe/probe.db \
+  --base-url http://localhost:8000/v1 \
+  --workers 32
+
+uv run python -m probe.report \
+  results/probe/probe.db \
+  results/probe/report.md
+
+uv run python -m probe.export \
+  results/probe/probe.db \
+  results/probe \
+  results/probe/train.jsonl \
+  --hard 0.1 \
+  --seed 42
+```
+
+Set `OPENAI_API_KEY` when the model endpoint requires authentication. If the
+server exposes multiple models, pass `--model` to `probe.rollout`.
 
 ## 🔬 Training and Evaluation
 

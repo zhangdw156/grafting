@@ -40,7 +40,7 @@ path = "src/VERSION"
 pattern = "(?P<version>.+)"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/grafting"]
+packages = ["src/grafting", "src/probe"]
 
 [tool.hatch.build.targets.wheel.force-include]
 "src/VERSION" = "grafting/VERSION"
@@ -77,5 +77,5 @@ pythonpath = ["src"]
 addopts = "--import-mode=importlib"
 
 [tool.coverage.run]
-source = ["src/grafting"]
+source = ["src/grafting", "src/probe"]
 branch = true
